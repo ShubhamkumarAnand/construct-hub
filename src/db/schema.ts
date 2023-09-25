@@ -90,7 +90,6 @@ export const progressTable = pgTable('progress', {
   progressImage: integer('progress_image'),
 });
 
-
 export const projectProgressRelation = relations(projectTable, ({ many }) => ({
   progress: many(progressTable),
 }));
