@@ -3,7 +3,7 @@ const stats = [
   { id: 2, name: 'Flat platform fee', value: '3%' },
   { id: 3, name: 'Uptime guarantee', value: '99.9%' },
   { id: 4, name: 'Paid out to creators', value: '$70M' },
-]
+];
 
 export default function SimpleGrid() {
   return (
@@ -22,12 +22,14 @@ export default function SimpleGrid() {
             {stats.map((stat) => (
               <div key={stat.id} className="flex flex-col bg-gray-400/5 p-8">
                 <dt className="text-sm font-semibold leading-6 text-gray-600">{stat.name}</dt>
-                <dd className="order-first text-3xl font-semibold tracking-tight text-gray-900">{stat.value}</dd>
+                <dd className="order-first text-3xl font-semibold tracking-tight text-gray-900">
+                  {stat.value}
+                </dd>
               </div>
             ))}
           </dl>
         </div>
       </div>
     </div>
-  )
+  );
 }

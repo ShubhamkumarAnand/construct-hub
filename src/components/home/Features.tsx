@@ -1,4 +1,9 @@
-import { ArrowPathIcon, CloudArrowUpIcon, FingerPrintIcon, LockClosedIcon } from '@heroicons/react/24/outline'
+import {
+  ArrowPathIcon,
+  CloudArrowUpIcon,
+  FingerPrintIcon,
+  LockClosedIcon,
+} from '@heroicons/react/24/outline';
 
 const features = [
   {
@@ -25,7 +30,7 @@ const features = [
       'Arcu egestas dolor vel iaculis in ipsum mauris. Tincidunt mattis aliquet hac quis. Id hac maecenas ac donec pharetra eget.',
     icon: FingerPrintIcon,
   },
-]
+];
 
 export default function Features() {
   return (
@@ -37,8 +42,8 @@ export default function Features() {
             Everything you need to deploy your app
           </p>
           <p className="mt-6 text-lg leading-8 text-gray-600">
-            Quis tellus eget adipiscing convallis sit sit eget aliquet quis. Suspendisse eget egestas a elementum
-            pulvinar et feugiat blandit at. In mi viverra elit nunc.
+            Quis tellus eget adipiscing convallis sit sit eget aliquet quis. Suspendisse eget egestas a
+            elementum pulvinar et feugiat blandit at. In mi viverra elit nunc.
           </p>
         </div>
         <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl">
@@ -58,5 +63,5 @@ export default function Features() {
         </div>
       </div>
     </div>
-  )
+  );
 }

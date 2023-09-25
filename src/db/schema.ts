@@ -1,5 +1,15 @@
 import { relations } from 'drizzle-orm';
-import { serial, pgTable, varchar, text, date, timestamp, integer, boolean } from 'drizzle-orm/pg-core';
+import {
+  serial,
+  pgTable,
+  varchar,
+  text,
+  date,
+  timestamp,
+  integer,
+  boolean,
+  primaryKey,
+} from 'drizzle-orm/pg-core';
 
 export const users = pgTable('users', {
   id: serial('id').primaryKey(),
@@ -43,8 +53,30 @@ export const projectRelation = relations(projectTable, ({ many }) => ({
   users: many(users),
 }));
 
-export const projectProgressRelation = relations(projectTable, ({ many }) => ({
-  progress: many(progressTable),
+export const usersToGroups = pgTable(
+  'users_to_project',
+  {
+    userId: integer('user_id')
+      .notNull()
+      .references(() => users.id),
+    projectId: integer('project_id')
+      .notNull()
+      .references(() => projectTable.id),
+  },
+  (t) => ({
+    pk: primaryKey(t.userId, t.projectId),
+  })
+);
+
+export const usersToGroupsRelations = relations(usersToGroups, ({ one }) => ({
+  group: one(projectTable, {
+    fields: [usersToGroups.projectId],
+    references: [projectTable.id],
+  }),
+  user: one(users, {
+    fields: [usersToGroups.userId],
+    references: [users.id],
+  }),
 }));
 
 export const progressTable = pgTable('progress', {
@@ -57,3 +89,8 @@ export const progressTable = pgTable('progress', {
   createdDate: date('created_date'),
   progressImage: integer('progress_image'),
 });
+
+
+export const projectProgressRelation = relations(projectTable, ({ many }) => ({
+  progress: many(progressTable),
+}));
